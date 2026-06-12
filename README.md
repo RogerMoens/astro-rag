@@ -30,7 +30,3 @@ This project implements a RAG-based pipeline that retrieves relevant information
 ## Project Status
 
 This project is currently under active development.
-
-## License
-
-
