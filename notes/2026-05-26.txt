@@ -1,0 +1,35 @@
+# Meeting 26/05 9-10h
+
+- Oude data (verder terug dan 2 jaar is publicly available)
+- Data cubes (x, y, polarization (stokes Intensity QVU), tijd/wavelength)
+- magneetvelden op de zon veroorzaken de polarizatiesignalen 
+	- Intensity is sum over alle intensity van de polarizaties 
+	- Horizontaal magneetvelden => stokes Q en U
+	- Verticale veld => circular Polarization => stokes V
+
+
+- I wordt foto
+- rest is polarizers
+- Q, V en U worden berekend
+
+- Stokes QU zijn minstens order kleiner dan V, en die is weer order kleiner I
+
+
+- Veel noise op Q en U
+
+- Verband V met Q en U
+
+- voigt function (Lorenzian in de wings en gaussian in de core (of andersom))
+	=> Meerdere profielen bij dus overlay van voigt function
+
+- Weak field approximation
+	- |B(wavelength,x,y, QUV) => magnetisch veld|
+	- proportional => keer alpha => staat vast per lijn (over spectraal lijn, fixed over lambda)
+
+
+=> regularized is momenteel de state of the art
+	=> Smooth image
+
+=> Cross talk => imprint van stokes I op Q, U en V (instrument problematisch)
+	=> Cross talk correctie => bepaalde punten op image waar het calm is en dan maken we polynoom tussen die punten
+	=> hoe sterk zijn die punten op de Stokes I. 
