@@ -1,41 +1,22 @@
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-from langchain_chroma import Chroma
+from sentence_transformers import SentenceTransformer
+import chromadb
 
 def load_db():
-    embeddings = OpenAIEmbeddings()
-
-    db = Chroma(
-        collection_name="astro_rag",
-        embedding_function=embeddings,
-        persist_directory="chroma_db"
-    )
-    return db
+    client = chromadb.PersistentClient(path="chroma_db")
+    return client.get_collection("scientific_rag")
 
 
 def query_rag(question, k=5):
-    db = load_db()
+    model = SentenceTransformer("all-MiniLM-L6-v2")
+    collection = load_db()
 
-    results = db.similarity_search(question, k=k)
+    query_embedding = model.encode([question])[0].tolist()
 
-    context = "\n\n".join(
-        [f"Source: {r.metadata['source']}\n{r.page_content}" for r in results]
+    results = collection.query(
+        query_embeddings=[query_embedding],
+        n_results=k
     )
 
-    llm = ChatOpenAI(model="gpt-4o-mini")
+    contexts = results["documents"][0]
 
-    prompt = f"""
-You are a scientific writing assistant.
-
-Use the context below to answer the question accurately.
-If you don't know, say so.
-
-CONTEXT:
-{context}
-
-QUESTION:
-{question}
-
-Answer in a structured academic style.
-"""
-
-    return llm.invoke(prompt).content
+    return "\n\n".join(contexts)

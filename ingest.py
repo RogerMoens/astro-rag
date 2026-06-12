@@ -52,26 +52,33 @@ def chunk_docs(docs):
 
 
 ## Build vector database
-from langchain_openai import OpenAIEmbeddings
-from langchain_chroma import Chroma
+from sentence_transformers import SentenceTransformer
+import chromadb
+from chromadb.config import Settings
 
 def build_vector_db(chunks):
-    embeddings = OpenAIEmbeddings()
+    model = SentenceTransformer("all-MiniLM-L6-v2")
 
-    db = Chroma(
-        collection_name="astro_rag",
-        embedding_function=embeddings,
-        persist_directory="chroma_db"
+    client = chromadb.PersistentClient(path="chroma_db")
+
+    collection = client.get_or_create_collection(
+        name="scientific_rag"
     )
 
     texts = [c["text"] for c in chunks]
     metas = [{"source": c["source"]} for c in chunks]
+    ids = [f"chunk_{i}" for i in range(len(chunks))]
 
-    db.add_texts(texts=texts, metadatas=metas)
+    embeddings = model.encode(texts).tolist()
 
-    db.persist()
-    return db
+    collection.add(
+        documents=texts,
+        embeddings=embeddings,
+        metadatas=metas,
+        ids=ids
+    )
 
+    return collection
 
 ## Run Ingestion
 if __name__ == "__main__":
