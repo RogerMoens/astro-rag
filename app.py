@@ -49,10 +49,14 @@ if prompt:
     rag_prompt = f"""
 You are a scientific assistant.
 
-Use the supplied context to answer the question.
+Use the supplied context to answer the question, and if so provide a reference to the source.
 
-If the answer is not contained in the context,
-say that the information was not found.
+
+When writing equations:
+- Use LaTeX notation.
+- Use $$...$$ for display equations.
+- Use $...$ for inline equations.
+
 
 Context:
 {context}
