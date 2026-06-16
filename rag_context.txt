@@ -1,0 +1,50 @@
+
+==================================================
+RAG CONTEXT EXPORT
+Generated: 2026-06-16 11:14:11
+==================================================
+
+Query:
+weak field approximation
+
+
+SYSTEM INSTRUCTIONS
+
+The following context was retrieved from a Retrieval-Augmented Generation (RAG) system.
+
+Important notes:
+- The retrieved context may be incomplete.
+- The retrieved context may contain errors, outdated information, or irrelevant passages.
+- Do not assume the context is fully correct.
+- Use the context as supporting evidence rather than absolute truth.
+- If information is missing, acknowledge uncertainty.
+- Prefer conclusions that are directly supported by the context.
+- When multiple sources disagree, mention the disagreement.
+- If answering scientific questions, distinguish clearly between established facts and hypotheses.
+- Cite source references when available.
+- Mathematical expressions should be written using LaTeX notation.
+- Do not fabricate references that are not present in the context.
+
+END OF INSTRUCTIONS
+
+
+==================================================
+RETRIEVED CONTEXT
+==================================================
+
+the denominator when it is very small, by avoiding a division by
+zero.
+We have illustrated this eﬀect in Fig. A.1, where we have
+calculated B⊥using a list of increasing values of the α parameter.
+In the leftmost panel α = 0 and the prediction is unrealistically
+large. We could not see this eﬀect in the simulated data because
+the simulation does not contain these type of proﬁles. We note
+that even when α is very small and the eﬀect of spatial coupling
+is barely visible, regularization seems to be enough to remove
+those unrealistically large predictions (α = 3 × 10−6).
+A diﬀerent type of regularization, which is local, can be
+applied instead to overcome this particular eﬀect in the WFA.
+This type of regularization is also an ℓ−2 method, usually
+referred to as low-norm regularization. It operates in a similar
+way as the diagonal damping λ parameter that is present in the
+Levenberg-Marquardt algorithm and it forces the solution to pre-
