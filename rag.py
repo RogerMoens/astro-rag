@@ -2,7 +2,7 @@ from sentence_transformers import SentenceTransformer
 import chromadb
 
 # Load model once when the script starts
-model = SentenceTransformer("all-MiniLM-L6-v2")
+model = SentenceTransformer("BAAI/bge-large-en-v1.5")
 
 
 def load_db():
@@ -10,7 +10,7 @@ def load_db():
     return client.get_collection("scientific_rag")
 
 
-def query_rag(question, k=100, max_distance=.4):
+def query_rag(question, k=100, max_distance=.5):
     """
     Retrieve up to k chunks from Chroma and keep only those
     below the specified distance threshold.

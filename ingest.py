@@ -34,8 +34,8 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 def chunk_docs(docs):
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,
-        chunk_overlap=150
+        chunk_size=500,
+        chunk_overlap=100
     )
 
     chunks = []
@@ -58,7 +58,7 @@ from chromadb.config import Settings
 
 def build_vector_db(chunks):
     device = "cuda"  # or "cpu"
-    model = SentenceTransformer("all-MiniLM-L6-v2", device=device)
+    model = SentenceTransformer("BAAI/bge-large-en-v1.5", device=device)
 
     client = chromadb.PersistentClient(path="chroma_db")
 

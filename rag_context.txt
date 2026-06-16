@@ -1,11 +1,11 @@
 
 ==================================================
 RAG CONTEXT EXPORT
-Generated: 2026-06-16 11:14:11
+Generated: 2026-06-16 12:32:12
 ==================================================
 
 Query:
-weak field approximation
+weak field approximation, weak-field approximation, WFA
 
 
 SYSTEM INSTRUCTIONS
@@ -32,12 +32,67 @@ END OF INSTRUCTIONS
 RETRIEVED CONTEXT
 ==================================================
 
-the denominator when it is very small, by avoiding a division by
-zero.
-We have illustrated this eﬀect in Fig. A.1, where we have
-calculated B⊥using a list of increasing values of the α parameter.
-In the leftmost panel α = 0 and the prediction is unrealistically
-large. We could not see this eﬀect in the simulated data because
+2.1. Weak-ﬁeld approximation
+The weak-ﬁeld approximation (WFA; Landi Degl’Innocenti &
+Landi Degl’Innocenti 1973) is an analytical solution of the radia-
+tive transfer equation. This allows us to derive the emerging
+Stokes Q, U, and V parameters describing the polarization of the
+light as a function of Stokes I and its derivatives as a function of
+wavelength. The fundamental assumptions are that the magnetic
+ﬁeld vector is constant with depth and that the splitting induced
+
+On the Weak Field Approximation for Ca 8542Å
+Rebecca Centeno
+High Altitude Observatory, 3080 Center Green Drive, Boulder, CO, USA; rce@ucar.edu
+Received 2018 April 30; revised 2018 September 4; accepted 2018 September 6; published 2018 October 16
+Abstract
+The weak ﬁeld approximation (WFA) is a conceptually simple and computationally light method for inferring the
+magnetic ﬁeld strength and its orientation in the Sun’s atmosphere. In this work, we study the validity and
+
+dominant factor in the upper-right part of our grid (Figs. 5 and 7)
+as the higher spatial frequencies of the signal cannot be distin-
+guished from noise any longer and we can only aim at retrieving
+larger scale details. In our study the parameter dependence is lin-
+ear and therefore, the regularized WFA method only required a
+modiﬁcation of the left-hand side term in the WFA equations.
+The estimation of errors for the WFA becomes less obvious
+
+Mgi 5173 Å, Nai 5896 Å and Caii 8542 Å lines.
+Methods. We have developed a spatially-regularized weak-ﬁeld approximation (WFA) method, based on the idea of spatial regu-
+larization. This method allows for a fast computation of magnetic ﬁeld maps for an extended ﬁeld of view. The ﬁdelity of this new
+technique has been assessed using a snapshot from a realistic 3D magnetohydrodynamics simulation.
+
+domain, to more clearly show the ﬁeld lines.
+for current density within the uncertainties. The minimum current method bound-
+ary values are shown also to enable NLFFF reconstructions. The P and N solutions
+obtained from the boundary values are twisted bipole ﬁeld conﬁgurations similar to
+the original NLFFF, but with reduced energies, due to the reduction in the bound-
+ary current density at locations aﬀected by the noise. The self-consistency procedure
+
+A demonstration of the method is presented, in application to boundary ﬁeld values
+for a NLFFF twisted bipole ﬁeld conﬁguration, with noise of a known amplitude added
+at a fraction of boundary locations. The model ﬁeld values are taken to represent
+observed data with known uncertainties. The minimum current method recovers a good
+approximation to the original current density values in the boundary from the noisy
+
+ous signals that are ideal for imposing spatiotemporal constraints
+in noisy scenarios. In this work, we study the case where the
+magnetic ﬁeld was inferred under the weak-ﬁeld approximation
+(WFA; Landi Degl’Innocenti & Landi Degl’Innocenti 1973), a
+powerful method to estimate the magnetic ﬁeld from plage
+(da Silva Santos et al. 2023) to ﬂare scenarios (Vissers et al.
+2021) and simple enough to focus our attention on this particular
+new implementation. The formalism also remains identical for
+
+implemented the new approach to perform spectropolarimetric
+inversions. Later we show the application of the NF on some
+examples and introduce some additional explicit regularizations.
+Finally, we provide a brief discussion about the implications of
+this work and outline potential extensions and improvements.
+2. Neural magnetic ﬁeld reconstruction
+2.1. Weak-ﬁeld approximation
+The weak-ﬁeld approximation (WFA; Landi Degl’Innocenti &
+
 the simulation does not contain these type of proﬁles. We note
 that even when α is very small and the eﬀect of spatial coupling
 is barely visible, regularization seems to be enough to remove
@@ -46,5 +101,1268 @@ A diﬀerent type of regularization, which is local, can be
 applied instead to overcome this particular eﬀect in the WFA.
 This type of regularization is also an ℓ−2 method, usually
 referred to as low-norm regularization. It operates in a similar
-way as the diagonal damping λ parameter that is present in the
-Levenberg-Marquardt algorithm and it forces the solution to pre-
+
+eter are used. However, in the case of WFA, the model uses the
+derivative of the observed proﬁle (see Eqs. (1) and (2)), elimi-
+nating the need for modeling Stokes I (LI). In other words, in
+WFA we assume that the noise introduced by the intensity pro-
+ﬁle is suﬃciently small to not signiﬁcantly impact the results.
+This, together with the simplicity of these equations makes WFA
+one of the most popular approaches for magnetic ﬁeld infer-
+
+x [pixels]
+0
+500
+y [pixels]
+NF WFA + Fibril orientation
+0
+500
+1000
+0
+500
+1000
+−500
+0
+500
+B∥[G]
+0
+200
+400
+600
+B⊥[G]
+0
+1
+2
+3
+ΦB [rad]
+Fig. 6. Magnetic ﬁeld inference from a Caii 8542 Å observation using the pixel-wise WFA, the NF WFA, and two additional approaches intro-
+ducing an explicit regularization term: using the information of a potential extrapolation of the magnetic ﬁeld (third row) and using the orientation
+
+compatible with the spectrum of the local pixel, but that also
+keep some spatial coherence with the nearest neighboring pix-
+els. The latter is achieved by penalizing strong horizontal gradi-
+ents in the reconstructed magnetic ﬁeld. Random noise solution
+with large amplitudes are therefore not compatible with these
+spatial constraints. Here we show that this modiﬁcation of the
+WFA least-squares equations allows improving the ﬁdelity of the
+
+present in the spatial dimensions.
+In the standard case, the WFA is applied to observations by
+deﬁning a merit penalty function and trying to minimize it, for
+example, for longitudinal component of the magnetic ﬁeld:
+χ2 = 1
+N
+λn
+X
+i=λ0
+
+Vi
+obs −Vi
+synt
+σi
+
+2
+= 1
+N
+λn
+X
+i=λ0
+1
+σ2
+i
+ 
+Vi
+obs −
+
+−C1
+dIi
+dλ B∥
+!2
+.
+(4)
+Hereafter, we assume that each data point is divided by the
+corresponding
+√
+Nσi, dropping those terms from the notation.
+
+pling of the Caii 8542 Å line, the spatially regularised weak-ﬁeld
+approximation does a good job at recovering a magnetic ﬁeld
+vector that is very similar to that obtained from non-LTE inver-
+sions (cf. Fig. 6). Over 90% of the pixels have the non-LTE and
+WFA inclinations within 15◦and their 3D ﬁeld vectors within
+25◦of each other. The LOS component in particular is close to
+the non-LTE-inferred value in strong-ﬁeld areas, while the trans-
+
+The estimation of errors for the WFA becomes less obvious
+because now the magnetic ﬁeld solution depends on more than
+1 https://github.com/morosinroberta/spatial_WFA
+A210, page 17 of 19
+A&A 642, A210 (2020)
+one pixel and it would imply propagating the errors though a sys-
+tem of equations. The formulas provided by Martínez González
+et al. (2012) allow estimating errors based on a less-constrained
+solution and therefore they can be considered an upper limit of
+the error estimate.
+
+they assume a smooth depth-stratiﬁed atmosphere that might not
+always be able to describe complex stratiﬁcations in all physi-
+cal parameters, and that can inﬂuence their ability to properly
+reconstruct the magnetic ﬁeld.
+The weak-ﬁeld approximation (WFA; Landi Degl’Innocenti
+& Landi Degl’Innocenti 1973) provides an alternative method
+to quickly obtain magnetic ﬁeld estimates whenever certain
+assumptions are satisﬁed (see Sect. 2). The WFA does not
+
+impact of noise in the maps, while keeping the amplitudes of
+the reconstructed magnetic ﬁeld patches. In the extreme case of
+σ = 10−1 (second row) there is a hint of the original structure of
+the magnetic ﬁeld in the non regularized WFA but the amplitude
+of the noise is as large as those signals. Increasing the regular-
+ization parameter reduces the noise level and a coherent structure
+can be recovered. We note however that the reconstruction is not
+
+6.1. Magnetic ﬁeld approximations
+Both the Milne-Eddington and spatially regularised weak-ﬁeld
+approximation oﬀer a computationally inexpensive way of
+obtaining the magnetic ﬁeld vector from observations, compared
+to full-blown non-LTE inversions. At the same time, they come
+with limitations, as we also see in this study. In particular the
+Fei Milne-Eddington inversion suﬀers from issues in locations
+where the Fei lines are in emission, recovering the wrong sign
+
+errors do not fully encapsulate the complexities found in actual
+observations, which are inﬂuenced by various systematic factors
+such as noise or spectral and spatial degradation. Nonetheless,
+within our idealized setting, the inference using the NF WFA
+is indicative of the potential improvements. Lastly, our calcu-
+lations provide two more conclusions. The ﬁrst one is that, if
+we decrease the value of ω, the NF tends to produce an exces-
+
+we decrease the value of ω, the NF tends to produce an exces-
+sively smooth solution. Although this is bad in general, it can
+be an advantage in very noisy observations. The second one is
+the ﬁnding that the larger the noise level, the better the recon-
+struction of the magnetic ﬁeld using the NF WFA is compared
+to the traditional WFA (see Fig. A.1 for a comparison using an
+increased noise level).
+3. Application to observations
+3.1. Example with real observations
+
+10
+n
+3
+s =
+- , while
+acceptable for the extraction of BLOS, is still too large for
+inferences of the horizontal component of the ﬁeld strength and
+its azimuth in the POS using the WFA: BT is severely
+overestimated, and the uncertainty in the azimuth is extremely
+large for ﬁeld strengths below ∼450G. There is a big
+qualitative leap from the
+10
+n
+3
+s =
+-
+to the
+10
+n
+4
+s =
+-
+case,
+the latter resulting in more accurate estimates of BT and
+WFA
+c
+above ∼200G.
+
+that couples the solution from neighbouring pixels.
+Considering then the horizontal ﬁeld (green arrows) from
+the spatially regularised weak-ﬁeld approximation (Fig. 5a) and
+non-LTE-inferred results (Fig. 5b), and comparing with that in
+A1, page 7 of 15
+A&A 645, A1 (2021)
+-2
+-1
+0
+1
+2
+Blos [kG]
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5
+Bhor [kG]
+0
+20
+40
+60
+80
+100
+120
+140
+160
+180
+θ(~BWFA, ~BSTiC) [degree]
+-260
+-250
+-240
+-230
+-220
+-210
+a) WFA Ca II
+490
+500
+510
+520
+530
+-260
+-250
+-240
+-230
+
+close to one. Our proposal is to use:
+α′ =
+α
+4B2norm
+,
+(21)
+where Bnorm is a typical norm for those magnetic ﬁeld diﬀerences
+(≈100 G). If the problem is scaled this way, both terms should be
+close to unity and the optimal value of α can be usually found
+in the range (0.1−10), depending on the target and how good the
+estimate of the norm is. For B⊥, the norm must be squared twice
+as the WFA is linear with the square of the magnetic ﬁeld.
+
+The self-consistent solution is qualitatively similar to the original ﬁeld. A quantita-
+tive measure is provided by the mean vector error (Schrijver et al., 2006):
+Em = 1
+M
+X
+i
+|Borig,i −Bsc,i|
+|Bsc,i|
+,
+(26)
+where Borig is the original NLFFF, Bsc is the ﬁeld obtained by the self-consistency
+procedure, and M = 1003 is the number of grid points. We ﬁnd Em = 1.6 × 10−2,
+indicating close correspondence.
+4. Discussion and conclusions
+
+and azimuth, where the latter still has an unresolved 180◦ambi-
+guity. We discuss our disambiguation approach for this and the
+other inferred azimuths in Sect. 3.4.
+3.2. Spatially regularised weak-ﬁeld approximation
+An estimate of the chromospheric magnetic ﬁeld can be obtained
+using the weak-ﬁeld approximation (WFA, Landi Degl’Innocenti
+1992; Landi Degl’Innocenti & Landolﬁ2004), which assumes
+that the Zeeman splitting is smaller than the Doppler broadening
+
+known as neural ﬁelds), for spectropolarimetric inversions.
+Methods. We have implemented and tested a neural ﬁeld to perform one of the simplest forms of spectropolarimetric inversions, the
+inference of the magnetic ﬁeld vector under the weak-ﬁeld approximation (WFA). By using a neural ﬁeld to describe the magnetic
+ﬁeld vector, we regularized the solution in the spatial and temporal domain by assuming that the physical quantities are continuous
+
+parameters is greatly improved when spatial constraints are
+present in the ﬁtting algorithm.
+In this paper, we propose to use a spatially-regularized WFA
+algorithm, based on the imposition of Tikhonov regularization
+(Tikhonov & Arsenin 1977) to infer the magnetic ﬁeld vec-
+tor from spectropolarimetric (chromospheric) observations. The
+underlying idea is to ﬁnd magnetic ﬁeld values that are not only
+compatible with the spectrum of the local pixel, but that also
+
+the magnetic ﬁeld for magnetic ﬁeld inference. We have shown
+the capabilities of NFs to solve static and time-dependent mag-
+netic ﬁeld inferences. This implementation4 comes with several
+important advantages.
+First, by reformulating the problem as a global problem
+(instead of pixel-wise independent problems), a NF can pro-
+duce a much more compact representation, decreasing the num-
+ber of parameters to optimize. This reduction generally depends
+
+shows the inferred magnetic ﬁeld using the NFs. The quality of
+the results is aﬀected, fundamentally, by the noise level and the
+regularization properties of NF. We have tested the performance
+of the NF for diﬀerent noise levels and values of ω, ﬁnding the
+same consistent behavior. The results summarized in Fig. 4 are
+for the particular conﬁguration with a noise level of 10−3 for
+Stokes V and 10−4 for Stokes Q and U, both given in units of
+A170, page 6 of 14
+
+Energy” method (Metcalf, 1994) called ME0 has been implemented.
+The original Minimum Energy algorithm minimizes the sum of the squares of the magni-
+tude of the ﬁeld divergence and the total electric-current density, where the vertical deriva-
+tives in each term are approximated by the derivatives of a linear force-free ﬁeld. Minimiz-
+ing |∇·B| gives a physically meaningful solution, and minimizing J provides a smoothness
+
+A&A, 693, A170 (2025)
+https://doi.org/10.1051/0004-6361/202452172
+c⃝The Authors 2025
+Astronomy
+&
+Astrophysics
+Exploring spectropolarimetric inversions using neural ﬁelds
+Solar chromospheric magnetic ﬁeld under the weak-ﬁeld approximation
+C. J. Díaz Baso1,2,⋆, A. Asensio Ramos3,4 , J. de la Cruz Rodríguez5 ,
+J. M. da Silva Santos6 , and L. Rouppe van der Voort1,2
+1 Institute of Theoretical Astrophysics, University of Oslo, PO Box 1029, Blindern N-0315, Oslo, Norway
+
+The test of the method presented here is highly idealised. It is not intended to
+provide a realistic example of the application of the method to vector magnetogram
+data, but only to demonstrate the method, and to show its performance in the best
+case.
+The method of inclusion of noise in the boundary data (adding Gaussian noise of
+known amplitude at speciﬁc locations to the horizontal ﬁeld components of a NLFFF
+calculated from analytic boundary conditions) does not produce a close approxima-
+
+proportional to the noise level. This eﬀect is well-known and
+produced because the maximum-likelihood solution is biased
+(Martínez González et al. 2012). The standard approach to deal
+with this bias is to avoid the regions where this eﬀect has a
+strong impact on any subsequent analysis. Here we show that the
+NF is able to provide a better estimate of the magnetic ﬁeld by
+ﬁnding a solution that is more coherent with the surroundings.
+This produces a mitigation of the bias of the transversal com-
+
+regularized WFA is publicly available1.
+Setting spatial constraints on the WFA reduces the noise
+present in the reconstructed maps and it improves the ﬁdelity of
+the reconstruction by coupling the solution spatially. However,
+the spatial resolution that this method is capable of achieving is
+still set by the telescope diﬀraction limit, by the spatial and spec-
+tral sampling of the data and by the noise level. The latter is the
+dominant factor in the upper-right part of our grid (Figs. 5 and 7)
+
+tinuous diﬀerentiable function allowed us to obtain a better esti-
+mation of the magnetic ﬁeld in places where the signals are
+buried in noise, without smearing out the details of locations
+where the signals are strong. Choosing adequate regularization
+frequencies ω is crucial to obtain results that are not overly
+smooth. These frequencies should be chosen so that the qual-
+ity of the ﬁt is not degraded but still maintains sharp gradients
+
+as the WFA is linear with the square of the magnetic ﬁeld.
+If the noise estimate is not included in the WFA least-squares
+problem, the two terms are unbalanced, usually requiring very
+small values of α. In the following section, we do not include
+this scaling (so we assume σ = 1 and α′ = α) in order to be able
+to compare absolute numbers in our results, but with real data
+this scaling of the problem makes the search for the optimal α
+parameter trivial.
+3. Tests with an 3D rMHD simulation
+
+ﬁle (see de la Cruz Rodríguez et al. 2013 and Appendix A of
+Morosin et al. 2020). In other words, the pixel-wise WFA com-
+pensates the very small Stokes I derivatives with a very large
+magnetic ﬁeld value (see Fig. A.2 for a map of the region and
+the respective derivatives). This eﬀect is more noticeable in poor
+spectral resolution measurements, as shown in Díaz Baso et al.
+(2023). The NF, on the other hand, is able to provide a more
+
+netic ﬁeld is slightly more spatially coherent, as expected, but the
+overall structure is very similar. This is a clear example of a lim-
+iting case in which there is not enough information to constrain
+the solution.
+To improve the magnetic ﬁeld estimation, we have imple-
+mented an explicit regularization. It is implemented by guid-
+ing the NF to simultaneously obey another physical constraint,
+apart from ﬁtting the spectropolarimetric observations. This con-
+
+(11)
+B⊥U = B sin θ sin φB
+(12)
+As in Sect. 2.1, we obtain the traditional WFA for the trans-
+verse magnetic ﬁeld component by deﬁning a merit function
+and minimizing it. In this case, we have obtained it for both
+contributions of Q and U to B⊥:
+
+B2
+⊥Q
+2 =
+
+P
+i Qi
+
+d¯Ii
+dλ
+
+C2
+P
+i
+
+d¯Ii
+dλ
+2
+
+2
+,
+(13)
+
+B2
+⊥U
+2 =
+
+P
+i Ui
+
+d¯Ii
+dλ
+
+C2
+P
+i
+
+d¯Ii
+dλ
+2
+
+2
+,
+(14)
+where C2 includes all the constant terms in Eqs. (9) and (10)
+
+In
+contrast,
+the
+usage
+of
+a
+potential
+ﬁeld
+approximation leads to a lower performance than the open
+conﬁguration. This suggest that a wrong upper-boundary
+condition can strongly affect the result. We note that we
+consider here a magnetic ﬁeld that is largely dominated by the
+lower boundary condition, while a potential ﬁeld approx-
+imation becomes more important when dealing with larger
+domains that deviate from the force-free assumption (see, e.g.,
+Section 3.2).
+
+A&A 642, A210 (2020)
+https://doi.org/10.1051/0004-6361/202038754
+c⃝ESO 2020
+Astronomy
+&
+Astrophysics
+Stratiﬁcation of canopy magnetic ﬁelds in a plage region
+Constraints from a spatially-regularized weak-ﬁeld approximation method
+Roberta Morosin, Jaime de la Cruz Rodríguez, Gregal J. M. Vissers, and Rahul Yadav
+Institute for Solar Physics, Dept. of Astronomy, Stockholm University, AlbaNova University Centre, 10691 Stockholm, Sweden
+e-mail: roberta.morosin@astro.su.se
+
+assumptions are satisﬁed (see Sect. 2). The WFA does not
+require knowledge of atom level populations to derive the emerg-
+ing intensities in Stokes Q, U and V. This method has been used
+extensively to analyze observations in the Caii 8542 Å and the
+Mgi b1 lines (e.g., Pietarila et al. 2007; Martínez González &
+Bellot Rubio 2009; Kleint 2017; Robustini et al. 2018; Centeno
+2018). However, the WFA is equally aﬀected by low signal-to-
+noise in observations as inversions are.
+
+10
+n
+4
+s =
+- for moderate to good spatial resolutions.4 Assessing
+the validity of a diagnostic tool such as WFA has little value if
+noise is not accounted for. Therefore, we added random noise
+to all of the synthetic Stokes proﬁles and reevaluated the
+accuracy of the WFA under more realistic conditions. For each
+set of Stokes proﬁles, we added 200 different realizations of the
+noise at the
+10
+n
+3
+s =
+- and
+10
+n
+4
+s =
+-
+levels (relative to the
+
+∼450G. Above this threshold, the error introduced by the
+noise still results in overestimating the ﬁeld by a few percent
+for the range of model ﬁeld strengths tested in this work. For a
+noise level of
+10
+n
+4
+s =
+- , the effect is only noticeable below
+B
+200
+T ~
+G, with the systematic biases of WFA becoming the
+dominant source of error above that value.
+If we reduce the number of wavelength samples by a factor
+of four, keeping the same noise levels, the 3σ spread in the
+
+ary current density at locations aﬀected by the noise. The self-consistency procedure
+(Wheatland and R´egnier, 2009) is applied, and demonstrated to produce a ﬁeld which is
+a close match to the original NLFFF. The energy of the self consistent solution is within
+a few percent of the energy of the original NLFFF. The self-consistency procedure uses
+information on current density over both polarities of the boundary ﬁeld, and hence is
+
+be helpful as a regularization, as we show later. After computing
+the Fourier features, we pass them through the neural network
+to obtain the magnetic ﬁeld. By using a Fourier mapping, we
+can eﬃciently reproduce both low and high spatial frequencies,
+being able to represent the magnetic ﬁeld with a high ﬁdelity.
+The third and fourth panels of Fig. 2 show the results of using
+the Fourier features with diﬀerent values of ω. Using ω = 10
+
+−60
+−40
+−20
+0
+20
+40
+60
+B∥[G]
+0
+10
+20
+30
+40
+50
+60
+70
+80
+B⊥[G]
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+ΦB [rad]
+Fig. A.1. Same as Fig. 4 but for an increased noise level. From left to right: original magnetic ﬁeld from the simulation, magnetic ﬁeld inferred by
+the pixel-wise WFA and results using the WFA NF.
+A170, page 13 of 14
+Díaz Baso, C. J., et al.: A&A, 693, A170 (2025)
+0
+250
+500
+x [pixel]
+0
+200
+400
+600
+800
+y [pixel]
+0
+250
+500
+0.6
+0.8
+1.0
+Iw [a.u.]
+20
+40
+60
+P
+λ |
+1
+λ−λ0(dI
+dλ)| [a.u.]
+
+¯n ¼
+c2
+2h3 J 0
+0 ;
+w ¼
+ﬃﬃ
+2
+p J 2
+0
+J 0
+0
+:
+ð19Þ
+Note that the anisotropy factor is bounded in the interval [1/2,
+1]. Both extremes correspond to radiation predominantly directed
+perpendicularly to the symmetry axis of the radiation ﬁeld and to
+radiation predominantly directed along the symmetry axis, respec-
+tively (see, e.g., the review by Trujillo Bueno 2001). In the case
+that the radiation ﬁeld is polarized, the range of variation of w is
+
+and C++ (de la Cruz Rodríguez 2019, see the upper right panel
+of Fig. 1).
+The WFA, on the other hand, is often used to obtain
+an estimate of the chromospheric magnetic ﬁeld vector (e.g.,
+de la Cruz Rodríguez et al. 2013; Pietarila et al. 2007; Harvey
+2012; Kleint 2017). Here we use an extension of this method
+by Morosin et al. (2020), spatial_WFA4, that imposes spatial
+continuity in the solution and that has recently been applied
+with success to Caii 8542 Å observations of an X2.2 ﬂare
+
+500
+= 0.1
+0
+100
+200
+300
+400
+500
+= 0.05
+0
+100
+200
+300
+400
+500
+= 0.001
+0
+200
+400
+ =0
+0
+100
+200
+300
+400
+500
+ =0
+0
+200
+400
+=10
+10
+0
+200
+400
+=10
+8
+0
+200
+400
+=10
+7
+−60
+−40
+−20
+0
+20
+40
+60
+Blos [G]
+Fig. 5. Inferred B∥from the spatially-regularized WFA of Bifrost synthetic data for diﬀerent values of noise σ and regularization parameter α.
+The top row shows the same B∥map from the MHD model for reference. The remainder of the grid presents results for increased regularization
+
+be very small in plage regions. Combined with low S/N data,
+that equation might combine a numerator and denominator that
+are both very small and dominated by noise, resulting often in
+predictions of strong magnetic ﬁeld. By adding regularization
+terms, we both construct a non diagonal linear system of equa-
+tions and add a term to the diagonal (the local contribution). The
+eﬀect of that term is not only a coupling one, but it also stabilizes
+
+of each spectral region indicated in Table 1: (a) blue, (b) red, (c) yellow
+(d) black. The z-scale has been estimated for each pixel from its atmo-
+sphere derived from an NLTE inversion assuming hydrostatic equilib-
+rium.
+6. Conclusions
+We have implemented a spatially-regularized weak-ﬁeld approx-
+imation by imposing Tikhonov regularization. This type of ℓ-
+2 regularization has been commonly used in diﬀerent stel-
+lar Doppler imaging applications (Piskunov 1990; Piskunov &
+
+L
+z
+z
+z
+,
+6
+h
+∣
+∣
+( )
+=
+¢ -
+D
+where Δz corresponds to the height range (z
+z
+max
+min
+¢
+-
+¢
+). With
+this, we prefer mappings that are close to the estimated height.
+We introduce a regularization for missing components (e.g.,
+the missing horizontal vector components) by optimizing for
+minimum energy solutions. We use
+L
+B
+,
+7
+NaN
+NaN
+2
+( )
+=
+where BNaN refers to the unspeciﬁed components (NaN values).
+With this, we prevent unrealistic strong magnetic ﬁelds of
+undeﬁned ﬁeld components.
+
+D
+l
+D
+), one can apply a
+perturbative scheme to the polarized RT equation and reduce
+it to a much simpler set of equations that are valid only in the
+weak magnetic ﬁeld limit. The mathematical condition for this
+is
+g
+1,
+1
+B
+D
+l
+l
+D
+D
+<<
+¯
+( )
+where g¯ is the effective Landé factor of the spectral line, and
+the Zeeman splitting (expressed in Å)
+B
+4.67
+10
+2
+B
+13
+0
+2
+l
+l
+D
+=
+´
+-
+( )
+depends on the magnetic ﬁeld strength, B (expressed in Gauss),
+and the central wavelength of the spectral line,
+0
+
+ponent and the azimuth of the magnetic ﬁeld, which are much
+closer to the real ones than those obtained with the traditional
+WFA. In this case, the implicit spatial regularization of the NF is
+able to provide a much better solution. The pixel-by-pixel WFA
+tends to overestimate the transversal component of the magnetic
+ﬁeld, producing a background component over the FoV which is
+proportional to the noise level. This eﬀect is well-known and
+
+ ! 1, the expressions for fI, fQ, and fU simplify considerably,
+because the magnetic kernel does not depend on the strength of
+the ﬁeld (in fact, fU ¼ 0) so that fþ and f only depend on the
+inclination and azimuth of the magnetic ﬁeld and on the angles
+deﬁning the line of sight. For  ¼ 0,  ¼ 0, and B ¼ 0, we
+obtain
+fþ ¼ 1þ 9
+2 cos2 B  cos4 B
+
+
+þ 3
+2
+ﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+cos4 B 3 cos2 B  1
+ð
+Þ
+p
+;
+f ¼ 1þ 9
+2 cos2 B  cos4 B
+
+
+ 3
+2
+
+With this, we prevent unrealistic strong magnetic ﬁelds of
+undeﬁned ﬁeld components.
+The combined loss is then computed by the weighted sum of
+the individual terms,
+L
+L
+L
+L
+L
+L
+.
+8
+ff
+ff
+div
+div
+B
+B
+h
+h
+NaN
+NaN
+( )
+l
+l
+l
+l
+l
+=
++
++
++
++
+For all our experiments, we set
+0.1
+ff
+div
+l
+l
+=
+=
+and use a
+scheduled weight for λB, where we exponentially decay from
+1000 to 1 over 105 iterations (for a detailed parameter
+discussion, see Jarolim et al. 2023). For our regularization,
+
+The minimum current estimates for the current density enable reconstruction of a
+nonlinear force-free ﬁeld. If the CFIT code is applied using the noisy current density
+estimates Jest
+z
+the Grad-Rubin iteration does not converge: the noise in the data pre-
+vents a successful reconstruction. However, accurate force-free solutions are obtained
+using the minimum current estimate for the current densities.
+SOLA: wheatland-ms-arxiv.tex; 17 October 2018; 18:34; p. 6
+
+of Fei emission proﬁles, resulting in erroneous LOS polari-
+ties. Allowing for depth-dependence is ultimately necessary for
+a proper inference of the magnetic ﬁeld vector in this (and
+likely most) ﬂaring region(s). In the chromosphere, the spatially-
+constrained weak-ﬁeld approximation oﬀers an excellent esti-
+mate of the non-LTE-inferred magnetic ﬁeld vector, where the
+ﬁeld strengths may be underestimated by a only few percent
+compared to actual inversions.
+
+The leftmost term is the usual deﬁnition of χ2 and if the noise is
+correctly estimated and the model can realistically represent the
+observed data, then that term should be of the order of one. The
+rightmost term depends on a scaling factor (α) and the square of
+diﬀerences between values of the magnetic ﬁeld, in Gauss units
+in our case. In order to make that term also close to one, we can
+add a constant that scales those terms so that the term itself is
+close to one. Our proposal is to use:
+
+This produces a mitigation of the bias of the transversal com-
+ponent. At the bottom right of each panel, we have quantiﬁed
+both approaches, retrieving an average error 2.5−4.5 times lower
+with the NF WFA compared with the pixel-wise approach. Our
+results conﬁrm the advantages of the spatial regularization found
+by Morosin et al. (2020). It is important to note that these small
+errors do not fully encapsulate the complexities found in actual
+
+ò = 10−6 is added for numerical stability.
+In addition, we optimize our neural network to reconstruct a
+magnetic ﬁeld B that matches the boundary and internal
+conditions Bτ(x, y), where Bτ refers to an observed magneto-
+gram at the optical depth τ. We optimize for this condition by
+sampling coordinates from the vector magnetogram and
+minimizing the componentwise distance between the observed
+Bτ and modeled B magnetogram at the same position. The loss
+term is then given by
+B
+B
+L
+.
+5
+B
+2
+( )
+=
+-
+
+- I wordt foto
+- rest is polarizers
+- Q, V en U worden berekend
+
+- Stokes QU zijn minstens order kleiner dan V, en die is weer order kleiner I
+
+
+- Veel noise op Q en U
+
+- Verband V met Q en U
+
+- voigt function (Lorenzian in de wings en gaussian in de core (of andersom))
+	=> Meerdere profielen bij dus overlay van voigt function
+
+- Weak field approximation
+	- |B(wavelength,x,y, QUV) => magnetisch veld|
+	- proportional => keer alpha => staat vast per lijn (over spectraal lijn, fixed over lambda)
+
+of the magnetic ﬁeld vector, especially the transverse component. This implicit regularization is a way of increasing the eﬀective sig-
+nal to noise of the observations. Although it is slower than the pixel-wise WFA estimation, this approach shows a promising potential
+for depth-stratiﬁed inversions, by reducing the number of free parameters and inducing spatiotemporal constraints in the solution.
+
+ing |∇·B| gives a physically meaningful solution, and minimizing J provides a smoothness
+constraint. For computational efﬁciency, the algorithm applied to HMI data uses a potential
+ﬁeld to approximate the vertical derivative in |∇· B| and minimizes only the magnitude of
+the normal component of the current density. Note that now we minimize |∇· B| + |Jz|
+in place of |∇· B|2 + |J|2 as in the original Minimum Energy method.
+
+scope (EST; Quintero Noda et al. 2022).
+Acknowledgements.
+We would like to thank the anonymous referee for their
+comments and suggestions. CJDB acknowledges M. L. DeRosa for valuable dis-
+cussions on future application of NF inversion methods. This research is sup-
+ported by the Research Council of Norway, project number 325491, and through
+its Centres of Excellence scheme, project number 262622. AAR acknowl-
+edges ﬁnancial support from the Agencia Estatal de Investigación del Minis-
+
+magnetic ﬁeld Bref,z(τ = 10−5), the improvement is minor. The
+additional horizontal ﬁeld (realistic split) leads to a clear
+improvement over the baseline extrapolations but provides a
+slightly lower performance than the conﬁguration with the
+spatially aligned vector magnetic ﬁeld (realistic vector). The
+metrics for divergence-freeness (Ln,div) and force-freeness (σJ)
+show that our extrapolations are consistent with the force-free
+model. Speciﬁcally, the divergence deviation is in the same
+
+inside active regions (and performs less well in weak ﬁeld regions) was chosen for both
+the e15w1332 and fd10 data. The values are [1:3:3:2] for [I Q U V] for the e15w1332
+data. A normalization of the weights by relative photon noise of the Stokes proﬁles was
+implemented in the fd10 data so that the equivalent weights are [1:2.89:2.89:2.02] for
+[I Q U V], as described in Centeno et al. (2013).
+• A regularization term that penalizes high values of η0 was added to the merit function in
+
+problem. In this case, the NF WFA does a job similar to the pixel-
+wise WFA because the magnetic ﬁeld is mainly concentrated at
+the sunspots and decreases rapidly for increasing distances from
+the sunspots. However, the formulation of the inversion process
+in terms of a NF allows us to include additional regularizations.
+The results of the inversions are shown in Fig. 6. The lon-
+gitudinal magnetic ﬁeld, the transverse magnetic ﬁeld, and the
+
+A qualitative analysis of the validity of the WFA used on the
+Ca II 8542 Å line can be found in Jennerholm Hammar (2014),
+who concludes that the approximation works well in general,
+allowing for a rapid and efﬁcient inference of the chromo-
+spheric magnetic ﬁeld vector.
+The aim of this paper is to quantitatively assess the range of
+validity of the WFA for inferring the magnetic ﬁeld strength
+and orientation in the chromosphere from the Ca II 8542 Å
+
+(PINN) was used to intrinsically ﬁnd a trade-off between the
+aforementioned physical model constraints and the observed
+magnetogram, where the obtained NLFF models adhere to a
+similar degree of quality and realism. This property is enabled
+by the ability of PINNs to smoothly integrate noisy data and
+incomplete physical models (Raissi et al. 2019; Karniadakis
+et al. 2021).
+In this study, we propose a novel approach based on PINNs
+that also incorporates magnetic ﬁeld measurements at multiple
+
+BU. Therefore, one could solve each sub-problem independently.
+This is useful, for instance, if one Stokes parameter has much
+stronger signals than the rest (typically the case of Stokes V),
+which could dominate the optimization process. In that case, one
+could use diﬀerent weights for each term in the merit function.
+We note that this last point is only valid for the WFA and not for
+the general case.
+2.3. Neural ﬁelds
+We propose here a general and powerful technique for the infer-
+
+stronger, more concentrated, and more ﬁnely structured. The
+pre-processing and lower spatial resolution of the numerical
+models are both likely to be the culprits behind these discrep-
+ancies.
+Hence, while full-blown (non-)LTE inversions remain nec-
+essary to obtain a depth-stratiﬁed atmospheric model, the spa-
+tially regularised WFA represents a powerful tool for quickly
+obtaining the chromospheric magnetic ﬁeld vector over a large
+
+continuous and diﬀerentiable magnetic ﬁeld map can be greatly
+beneﬁcial for the computation of current sheets though spatial
+derivatives of the magnetic ﬁeld (see the application to inver-
+sion methods of Pastor Yabar et al. 2021; Esteban Pozuelo et al.
+2024), which otherwise will be greatly aﬀected by the (potential)
+presence of noise and inversion artifacts. Finally, it is straightfor-
+ward to include any explicit additional regularization term in the
+
+photosphere and the lower chromosphere with some redundancy
+and depth overlap. We study the expansion of the canopy as a
+function of height and reconstruct a vertical slice of the line-of-
+sight magnetic ﬁeld stratiﬁcation.
+2. Spatially-regularized weak-ﬁeld approximation
+The weak-ﬁeld approximation is an approximate solution of the
+radiative transfer equation that allows predicting Stokes Q, U
+and V as a function of Stokes I and its derivatives as a function
+
+tial frequency. The magnetic ﬁeld generated by the NF is used to
+compute the synthetic observables via the WFA approximation,
+which are then compared with the observations. In particular, for
+the longitudinal magnetic ﬁeld, and using Eq. (1), we have used
+the following merit function:
+LV =
+X
+x,y
+X
+λ
+
+−CVB∥(x, y|θ)
+dIobs
+x,y
+dλ
+−Vobs
+x,y
+
+2
+,
+(9)
+where CV = 4.6686 × 10−13¯gλ2
+0 is a constant for the line of inter-
+
+9
+The Astrophysical Journal, 866:89 (14pp), 2018 October 20
+Centeno
+calculation with scattering-induced polarization modiﬁed by
+the Hanle and Zeeman effects. The colors account for the
+different observing geometries.
+As expected, while the WFA inference from the “Zeeman-
+only” proﬁles converges toward the model value in the zero-
+ﬁeld case, the opposite is true for the inferences from the
+scattering polarization signatures, which diverge strongly from
+
+results from the analysis of the ﬁrst time frame are shown in
+Fig. 5. The ﬁrst row shows the results with the pixel-wise WFA
+and the second row displays those obtained when applying the
+WFA NF. As expected, since the Stokes V signals are well above
+the noise, the inference with both methods is very similar. In con-
+trast, the pixel-wise WFA estimates a transverse magnetic ﬁeld
+larger than 1500 G in many locations within the FoV. The reason
+
+on WFA inferences.
+3
+The Astrophysical Journal, 866:89 (14pp), 2018 October 20
+Centeno
+using the WFA, and the results were compared to the magnetic
+ﬁeld of the model in order to quantify the differences and
+qualitatively analyze the biases. Lastly, the exercise was
+repeated after adding noise of different magnitudes to the
+synthetic proﬁles, and the uncertainties of the WFA inferences
+were evaluated for different S/N levels.
+3.1. Constant Vertical Magnetic Field
+
+one of the most popular approaches for magnetic ﬁeld infer-
+ence. The linear dependence on the model parameters facili-
+tates ﬁnding an analytical solution for the optimization of the
+merit function (see, e.g., Martínez González et al. 2012). Since
+our approach here is more general (taking spatial correlation into
+account and considering more complex radiative transfer models
+in the near future), we do not use the analytical solution. Rather,
+
+though the Stokes Q and U are not always recovered in mag-
+nitude. The noisiness of the non-LTE-inferred B⊥and ϕ maps
+in contrast to those from the spatially regularised WFA fur-
+ther emphasise the need for spatial coupling in the inversions,
+as proposed recently by Asensio Ramos & de la Cruz Rodríguez
+(2015), de la Cruz Rodríguez (2019).
+While the MHS model agrees qualitatively (and to a large
+extent, also quantitively) with the observationally inferred chro-
+
+WFA might not correspond to a unique geometrical height in
+the simulation in all pixels, making the comparison with the
+input magnetic ﬁeld vector non trivial. Since our goal is not to
+assess the eﬀect of magnetic ﬁeld gradients on the WFA, but the
+improvement delivered by our new method when compared to
+the traditional WFA, we have set the vertical stratiﬁcation of the
+magnetic ﬁeld in each pixel to a constant value, which corre-
+sponds to the vertical average of the magnetic ﬁeld at the same
+
+overview of existing algorithms for resolving the 180◦ambiguity in vector magnetic ﬁelds: quantitative
+tests with synthetic data. Solar Phys. 237, 267 – 296. DOI.
+Metropolis, N., Rosenbluth, A., Rosenbluth, M., Teller, A., Teller, E.: 1953, Equations of state calculations
+by fast computing machines. J. Chem. Phys. 21, 1087 – 1092. DOI.
+Norton, A.A., Graham, J.P., Ulrich, R.K., Schou, J., Tomczyk, S., Liu, Y., Lites, B.W., López Ariste, A.,
+
+the states of linear polarization among themselves (this is referred
+to as Faraday rotation). According to Landi Degl’Innocenti &
+Landolﬁ(2004), in the weak ﬁeld limit (
+B
+D
+l
+l
+D
+D
+
+), M-O
+effects yield corrections of the order of
+m
+B
+D
+l
+l
+D
+D
+(
+) , with
+m=5 for Stokes I, m=2 for Stokes V, and m=1 for Stokes Q
+and U. In order to evaluate their importance, we should estimate
+the magnitude of this ratio. Figure 8 presents the quantity
+B
+D
+l
+l
+D
+D
+
+Stift M. J., Leone F., 2003, A&A , 398, 411 
+Su ´arez Mascare ˜ 
+no A., et al., 2020, A&A , 639, 77 
+Tennyson J. et al., 2020, J. Quant. Spec. Radiat. Transf. , 255, 107228 
+Valenti J. A., Fischer D. A., 2005, ApJS , 159, 141 
+Valenti J. A., Marcy G. W., Basri G., 1995, ApJ , 439, L939 
+Valyavin G., Kochukhov O., Piskunov N., 2004, A&A , 420, 993 
+Wade G. A., Bagnulo S., Kochukhov O., Landstreet J. D., Piskunov N., Stift 
+M. J., 2001, A&A , 374, 265 
+Wenger M. et al., 2000, A&AS , 143, 9
+
+which are compatible with the noise amplitude of the obser-
+vations. This makes us conﬁdent that the implicit bias intro-
+duced in the NF with the small value of ωt correctly captures
+the time variation of the longitudinal component of the mag-
+netic ﬁeld. However, since this particular region is very dynamic,
+one could argue that a less restrictive temporal regularization
+could be needed to properly capture the details of the small-
+
+the dot product of the ﬁeld at one pixel with the ﬁeld at its neighbors is used. In areas close
+to pixels with well-determined ﬁelds, the method performs well, as it quickly produces a
+smooth transition to noisy pixels. While the result is always a smooth solution, the algorithm
+HMI Vector Magnetic Field Observations
+3499
+can become trapped in a smooth but incorrect result, which tends to be propagated outwards
+
+recorded on 2018-09-30 in the Caii 8542 Å line by Vissers et al.
+(2022) with the CRISP instrument at the SST consisting of a
+mosaic of four overlapping pointings. This target was selected
+to explore the behavior of the NF when the magnetic ﬁeld is par-
+ticularly weak, but with a simple enough connectivity to investi-
+gate what additional information we could add to the inference
+problem. In this case, the NF WFA does a job similar to the pixel-
+
+X = 80′′ and 82′′.
+The non-LTE inversions do not ﬁt Stokes Q and U as well
+as V, mostly where the horizontal ﬁeld is expected to be weak
+(based on the WFA). For instance, the synthetic maps hardly
+recover any signal within the contour lines centred at X = 77′′.5,
+where the WFA-derived B⊥is lower than 150 G, and in general
+above X = 80′′.5 , even though the observed maps clearly exhibit
+some structure. This is reﬂected in the inferred B⊥and ϕ maps,
+
+places. For the magnetofrictional model, Price et al. (2019) apply
+spatial and temporal smoothing to ensure numerical stability of
+the simulations. In addition, the vector magnetic ﬁeld maps are
+rebinned spatially in both approaches, by a factor of two and of
+four in the MHD and MF model, respectively. Combined, these
+eﬀects result in a factor of two to three in ﬁeld strength amplitude
+diﬀerence between the models and the inversions. We note here
+
+Sun, Vr, is close to −165 m s−1 at these four times. Excluding strong-ﬁeld regions, the patterns are similar.
+The color table shows ﬁeld strength in Mx cm−2.
+B > 300 Mx cm−2, roughly 3σ of the nominal ﬁeld strength noise. To that map of me-
+dian values a 15th-order two-dimensional polynomial is ﬁt. The basis functions are Cheby-
+shev polynomials of the ﬁrst kind. The reference coefﬁcients are saved in the data series
+
+L even if the Q and U observations are pure noise. As a result,
+when applied to very noisy data, the reconstructed |B⊥| maps
+predict strong magnetic ﬁelds everywhere. In our case, Eqs. (13)
+and (14) keep the sign of Q and U in the numerator and, in noisy
+cases, the summation should average to a number close to zero
+if Q and U are pure noise and the denominator is non zero.
+We can deﬁne a modiﬁed merit function for the transverse
+ﬁeld that accounts for regularization in exactly the same way
+
+Brooke J. S. A., Bernath P. F ., W estern C. M., Sneden C., Af s ¸ar M., Li G., 
+Gordon I. E., 2016, J. Quant. Spec. Radiat. Transf. , 168, 142 
+Burrows A., Ram R. S., Bernath P., Sharp C. M., Milsom J. A., 2002, ApJ , 
+577, L986 
+Cook N. J. et al., 2022, PASP , 134, 114509 
+Cristofari P. I. et al., 2022a, MNRAS , 511, 1893 
+Cristofari P. I. et al., 2022b, MNRAS , 516, 3802 
+Deen C. P., 2013, AJ , 146, 51 
+D ´ıez Alonso E. et al., 2019, A&A , 621, 126
+
+can be recovered. We note however that the reconstruction is not
+perfect and the regions with very weak magnetic ﬁeld are lost
+as they did not leave an imprint above the noise in the Stokes
+proﬁles. This imprint does not need to be large at all, and even
+a very small hint of signal above the noise level seems to be
+enough (see Fig. 4). Overall, the optimal α parameter for each
+noise level seems to be located around the counter-diagonal of
+the grid.
+
+Fig. A.1 and A.2 present the results for ROI 2 in a similar format
+as Figs. 5 and 6, but the contours in Fig. A.1 now solely indi-
+cate the B⊥= 150 G level. Similar to ROI 1, Stokes I and V are
+best reproduced in general, while Q and U are more problem-
+atic, especially where the WFA already indicates that the ﬁeld
+is weak. For instance, the regions to the right of the contours
+around (X, Y) = (95′′, −266′′), the band around Y = −264′′,
+
+the general case.
+2.3. Neural ﬁelds
+We propose here a general and powerful technique for the infer-
+ence of magnetic ﬁeld (and potentially thermodynamical param-
+eters when using models more complex than the WFA) from
+observations using neural networks. The general idea is depicted
+in Fig. 1 and described in the following. We use a neural
+network, fθ(x, y), to describe the components of the magnetic
+ﬁeld vector as a function of the coordinates. In this case, we
+
+hand, the quantity fBT
+2, referred to in the literature as horizontal
+magnetic ﬂux, measures a vector magnitude across a surface
+that is in general not perpendicular to the direction of said
+vector, which by deﬁnition is not a ﬂux. Here, BLOS and BT
+cannot be recovered directly, posing a severe limitation that
+stiﬂes the retrieval of the intrinsic ﬁeld strength, which in turn
+precludes the calculation of the magnetic energy density.
+One can call out reasons why it may be acceptable to assume
+
+this case yields similar results to the reconstructions of B∥, but
+with some notable diﬀerences. When the noise level is low or
+absent (lower-left corner of the grid) we would expect the WFA
+to yield an almost perfect reconstruction, however this is not the
+case. There are several reasons why the result is actually showing
+more spatial structure (artifacts) than the top row:
+– The velocity ﬁeld present in the simulation is aﬀected by
+gradients that can make the WFA not valid for the trans-
+
+magnetic ﬁeld (longitudinal and transverse) in a certain pixel is
+then also determined by the solution of the surrounding pixels
+and it cannot be computed individually anymore, like in the case
+of the standard WFA. As a result, the problem becomes global
+and the magnetic ﬁeld must be solved for the entire ﬁeld of view
+simultaneously. Taking into account the values of nearby pixels
+is expected to be a decisive improvement of the ﬁdelity of the
+WFA solution as it should limit the impact of noise.
+
+row of the grid we have plotted the constant magnetic ﬁeld strat-
+iﬁcation that we used to synthesize the proﬁles.
+When the noise levels are low (bottom rows), the amplitude
+and shape of the Stokes proﬁles is well-determined and very little
+or no regularization is required (lower-left part of the grid). As
+we increase the noise level, the solution becomes more aﬀected
+by noise, but using spatial constraints allows diminishing the
+impact of noise in the maps, while keeping the amplitudes of
