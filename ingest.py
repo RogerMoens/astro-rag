@@ -57,19 +57,27 @@ import chromadb
 from chromadb.config import Settings
 
 def build_vector_db(chunks):
-    model = SentenceTransformer("all-MiniLM-L6-v2")
+    device = "cuda"  # or "cpu"
+    model = SentenceTransformer("all-MiniLM-L6-v2", device=device)
 
     client = chromadb.PersistentClient(path="chroma_db")
 
     collection = client.get_or_create_collection(
-        name="scientific_rag"
+        name="scientific_rag",
+        metadata={"hnsw:space": "cosine"}
     )
 
     texts = [c["text"] for c in chunks]
     metas = [{"source": c["source"]} for c in chunks]
     ids = [f"chunk_{i}" for i in range(len(chunks))]
 
-    embeddings = model.encode(texts).tolist()
+    embeddings = model.encode(
+        texts,
+        batch_size=64,          # tune: 32, 64, 128 depending on VRAM
+        convert_to_tensor=True, # keeps it on GPU longer
+        show_progress_bar=True
+    )
+    embeddings = embeddings.cpu().tolist()
 
     collection.add(
         documents=texts,

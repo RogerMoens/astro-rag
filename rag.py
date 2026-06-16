@@ -10,7 +10,7 @@ def load_db():
     return client.get_collection("scientific_rag")
 
 
-def query_rag(question, k=100, max_distance=0.4):
+def query_rag(question, k=100, max_distance=.4):
     """
     Retrieve up to k chunks from Chroma and keep only those
     below the specified distance threshold.
